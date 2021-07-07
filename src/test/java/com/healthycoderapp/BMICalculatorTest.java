@@ -11,13 +11,22 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-/**
- * Unit test for simple App.
- */
 public class BMICalculatorTest {
+    @BeforeAll
+    static void beforeAll() {
+        System.out.println("Before all unit tests");
+    }
+
+    @AfterAll
+    static void afterAll() {
+        System.out.println("After all unit tests");
+    }
+
     @Test
     void should_ReturnTrue_When_DietRecommended(){
         // given
