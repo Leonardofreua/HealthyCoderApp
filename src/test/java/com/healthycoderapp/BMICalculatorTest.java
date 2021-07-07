@@ -103,5 +103,4 @@ public class BMICalculatorTest {
         // then
         assertArrayEquals(expectedScores, bmiScores);
     }
-
 }
