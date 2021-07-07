@@ -8,10 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +15,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 public class BMICalculatorTest {
     @BeforeAll
@@ -32,7 +30,7 @@ public class BMICalculatorTest {
     }
 
     @ParameterizedTest(name = "weight={0}, height={1}")
-    @CsvSource(value = {"89.0, 1.72", "95.0, 1.75", "110.0, 1.78"})
+    @CsvFileSource(resources = "/diet-recommended-input-data.csv", numLinesToSkip = 1)
     void should_ReturnTrue_When_DietRecommended(Double coderWeight, Double coderHeight) {
         // given
         double weight = coderWeight;
