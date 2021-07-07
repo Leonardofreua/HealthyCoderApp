@@ -1,6 +1,7 @@
 package com.healthycoderapp;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -85,4 +86,22 @@ public class BMICalculatorTest {
         // then
         assertNull(coderWorstBMI);
     }
+
+    @Test
+    public void should_ReturnCorrectBMIScoreArray_When_CoderListNotEmpty() {
+        // given
+        List<Coder> coders = new ArrayList<>();
+        coders.add(new Coder(1.80, 60.0));
+        coders.add(new Coder(1.82, 98.0));
+        coders.add(new Coder(1.82, 64.7));
+
+        double[] expectedScores = {18.52, 29.59, 19.53};
+
+        // when
+        var bmiScores = BMICalculator.getBMIScores(coders);
+
+        // then
+        assertArrayEquals(expectedScores, bmiScores);
+    }
+
 }
