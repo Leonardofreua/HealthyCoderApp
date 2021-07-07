@@ -8,6 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +30,11 @@ public class BMICalculatorTest {
         System.out.println("After all unit tests");
     }
 
-    @Test
-    void should_ReturnTrue_When_DietRecommended(){
+    @ParameterizedTest
+    @ValueSource(doubles = {89.0, 95.0, 110.})
+    void should_ReturnTrue_When_DietRecommended(Double coderWeight) {
         // given
-        double weight = 89.0;
+        double weight = coderWeight;
         double height = 1.72;
 
         // when
@@ -41,7 +45,7 @@ public class BMICalculatorTest {
     }
 
     @Test
-    void should_ReturnFalse_When_DietNotRecommended(){
+    void should_ReturnFalse_When_DietNotRecommended() {
         // given
         double weight = 50.0;
         double height = 1.92;
