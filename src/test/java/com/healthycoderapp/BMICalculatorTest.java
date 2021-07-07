@@ -3,6 +3,7 @@ package com.healthycoderapp;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -71,5 +72,17 @@ public class BMICalculatorTest {
             () -> assertEquals(1.82, coderWorstBMI.getHeight()),
             () -> assertEquals(98.0, coderWorstBMI.getWeight())
         );
+    }
+
+    @Test
+    public void should_ReturnNullWorstBMICoder_When_CoderListEmpty() {
+        // given
+        List<Coder> coders = new ArrayList<>();
+
+        // when
+        var coderWorstBMI = BMICalculator.findCoderWithWorstBMI(coders);
+
+        // then
+        assertNull(coderWorstBMI);
     }
 }
