@@ -24,7 +24,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
 public class BMICalculatorTest {
-    private final static String ENVIRONMENT = "dev";
+    private static final String ENVIRONMENT = "dev";
 
     @BeforeAll
     static void beforeAll() {
