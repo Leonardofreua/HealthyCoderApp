@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -79,8 +80,10 @@ public class BMICalculatorTest {
     }
 
     @Nested
+    @DisplayName("{{}} sample inner class display name")
     class FindCoderWithWorstBMITests {
         @Test
+        @DisplayName("{{}} sample method display name")
         void should_ReturnCoderWithWorstBMI_When_CoderListNotEmpty() {
             // given
             List<Coder> coders = new ArrayList<>();
