@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTimeout;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -21,6 +22,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
 public class BMICalculatorTest {
+    private final static String ENVIRONMENT = "dev";
+
     @BeforeAll
     static void beforeAll() {
         System.out.println("Before all unit tests");
@@ -91,6 +94,8 @@ public class BMICalculatorTest {
 
     @Test
     void should_ReturnCoderWithWorstBMIIn100Ms_When_CoderListHas10000Elements() {
+        assumeTrue(ENVIRONMENT.equals("prod"));
+
         // given
         List<Coder> coders = new ArrayList<>();
         for (int i = 0; i < 10000; i++) {
